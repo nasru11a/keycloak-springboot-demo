@@ -1,0 +1,20 @@
+server:
+  port: 8081
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak:8080/realms/demo-realm
+          jwk-set-uri: http://keycloak:8080/realms/demo-realm/protocol/openid-connect/certs
+
+keycloak:
+  realm: demo-realm
+  auth-server-url: http://keycloak:8080
+  resource: spring-boot-client
+  public-client: false
+  credentials:
+    secret: ${KEYCLOAK_CLIENT_SECRET:8c7d6e5f-4a3b-2c1d-0e9f-8a7b6c5d4e3f}
+  bearer-only: true
+  use-resource-role-mappings: true 
